@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, send_file
 import wifi_qrcode_generator.generator
 import os
+from waitress import serve
 
 tmp_file = "wifi_qr.png"
 app = Flask(__name__)
@@ -33,4 +34,4 @@ def index():
     return render_template("index.html")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    serve(app, host="0.0.0.0", port=8000, threads=6)
