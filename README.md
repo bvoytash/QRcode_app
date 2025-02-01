@@ -2,6 +2,7 @@
 ```
 docker run -d -P --name qrcode bvoytash/qrcode:latest  
 ```
+### Live at: https://qrcode-app-n7yi.onrender.com
 
 ### Flask app which create a QR code for Wi-Fi connection
 
