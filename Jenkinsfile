@@ -50,23 +50,19 @@ pipeline {
                         string(credentialsId: 'RENDER_DEPLOY_HOOK_3', variable: 'RENDER_DEPLOY_HOOK_3')
                     ]) {
                         if (isUnix()) {
-                            sh '''
-                                echo "RENDER_DEPLOY_HOOK_3: $RENDER_DEPLOY_HOOK_3"
-                                echo "RENDER_API_KEY_3: $RENDER_API_KEY_3"
-                                curl -v -X POST $RENDER_DEPLOY_HOOK_3 \
-                                -H "Authorization: Bearer $RENDER_API_KEY_3" \
+                            sh """
+                                curl -X POST https://api.render.com/v1/services/${env.RENDER_DEPLOY_HOOK_3}/deploys \
+                                -H "Authorization: Bearer ${env.RENDER_API_KEY_3}" \
                                 -H "Content-Type: application/json" \
                                 -d "{}"
-                            '''
+                            """
                         } else {
-                            bat '''
-                                echo RENDER_DEPLOY_HOOK_3: %RENDER_DEPLOY_HOOK_3%
-                                echo RENDER_API_KEY_3: %RENDER_API_KEY_3%
-                                curl -v -X POST %RENDER_DEPLOY_HOOK_3% ^
-                                -H "Authorization: Bearer %RENDER_API_KEY_3%" ^
+                            bat """
+                                curl -X POST https://api.render.com/v1/services/${env.RENDER_DEPLOY_HOOK_3}/deploys ^
+                                -H "Authorization: Bearer ${env.RENDER_API_KEY_3}" ^
                                 -H "Content-Type: application/json" ^
                                 -d "{}"
-                            '''
+                            """
                         }
                     }
                 }
