@@ -27,7 +27,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    if (isUnix()) {1312
+                    if (isUnix()) {
                         sh '''
                             source .venv/bin/activate
                             python3 test.py
@@ -52,7 +52,7 @@ pipeline {
                         if (isUnix()) {
                             sh '''
                                 curl -X POST ${env.RENDER_DEPLOY_HOOK_3} \
-                                -H "Authorization: Bearer ${env.RENDER_API_KEY_3" \
+                                -H "Authorization: Bearer ${env.RENDER_API_KEY_3"} \
                                 -H "Content-Type: application/json" \
                                 -d "{}"
                             '''
