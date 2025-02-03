@@ -27,7 +27,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    if (isUnix()) {
+                    if (isUnix()) {1312
                         sh '''
                             source .venv/bin/activate
                             python3 test.py
