@@ -52,7 +52,7 @@ pipeline {
                         if (isUnix()) {
                             sh '''
                                 curl -X POST ${env.RENDER_DEPLOY_HOOK_3} \
-                                -H "Authorization: Bearer ${env.RENDER_API_KEY_3"} \
+                                -H "Authorization: Bearer ${env.RENDER_API_KEY_3}" \
                                 -H "Content-Type: application/json" \
                                 -d "{}"
                             '''
